@@ -1,8 +1,10 @@
 <?php
-class ControllerShippingFreteRapido extends Controller {
+class ControllerShippingFreteRapido extends Controller
+{
     private $error = array();
 
-    public function install() {
+    public function install()
+    {
         $this->load->model('localisation/language');
         $this->load->model('localisation/order_status');
         $this->load->language('shipping/freterapido');
@@ -36,80 +38,89 @@ class ControllerShippingFreteRapido extends Controller {
         $this->db->query("
             INSERT INTO fr_category
             (fr_category_id, name, code) VALUES
-              (1, 'Abrasivos', 1),
-              (2, 'Adubos / Fertilizantes', 2),
-              (3, 'Alimentos', 3),
-              (4, 'Artigos para Pesca', 4),
-              (5, 'Auto Peças', 5),
-              (6, 'Bebidas / Destilados', 6),
-              (7, 'Brindes', 7),
-              (8, 'Brinquedos', 8),
-              (9, 'Calçados', 9),
-              (10, 'CD / DVD / Blu-Ray', 10),
-              (11, 'Combustíveis / Óleos', 11),
-              (12, 'Confecção', 12),
-              (13, 'Cosméticos / Perfumaria', 13),
-              (14, 'Couro', 14),
-              (15, 'Derivados Petróleo', 15),
-              (16, 'Descartáveis', 16),
-              (17, 'Editorial', 17),
-              (18, 'Eletrônicos', 18),
-              (19, 'Eletrodomésticos', 19),
-              (20, 'Embalagens', 20),
-              (21, 'Explosivos / Pirotécnicos', 21),
-              (22, 'Farmacêutico / Medicamentos', 22),
-              (23, 'Ferragens', 23),
-              (24, 'Ferramentas', 24),
-              (25, 'Fibras Ópticas', 25),
-              (26, 'Fonográfico', 26),
-              (27, 'Fotográfico', 27),
-              (28, 'Fraldas / Geriátricas', 28),
-              (29, 'Higiene / Limpeza', 29),
-              (30, 'Impressos', 30),
-              (31, 'Informática / Computadores', 31),
-              (32, 'Instrumento Musical', 32),
-              (33, 'Livro(s)', 33),
-              (34, 'Materiais Escolares', 34),
-              (35, 'Materiais Esportivos', 35),
-              (36, 'Materiais Frágeis', 36),
-              (37, 'Material de Construção', 37),
-              (38, 'Material de Irrigação', 38),
-              (39, 'Material Elétrico / Lâmpada(s)', 39),
-              (40, 'Material Gráfico', 40),
-              (41, 'Material Hospitalar', 41),
-              (42, 'Material Odontológico', 42),
-              (43, 'Material Pet Shop / Rações', 43),
-              (44, 'Material Veterinário', 44),
-              (45, 'Móveis montados', 45),
-              (46, 'Moto Peças', 46),
-              (47, 'Mudas / Plantas', 47),
-              (48, 'Papelaria / Documentos', 48),
-              (49, 'Perfumaria', 49),
-              (50, 'Material Plástico', 50),
-              (51, 'Pneus e Borracharia', 51),
-              (52, 'Produtos Cerâmicos', 52),
-              (53, 'Produtos Químicos', 53),
-              (54, 'Produtos Veterinários', 54),
-              (55, 'Revistas', 55),
-              (56, 'Sementes', 56),
-              (57, 'Suprimentos Agrícolas / Rurais', 57),
-              (58, 'Têxtil', 58),
-              (59, 'Vacinas', 59),
-              (60, 'Vestuário', 60),
-              (61, 'Vidros / Frágil', 61),
-              (62, 'Cargas refrigeradas/congeladas', 62),
-              (63, 'Papelão', 63),
-              (64, 'Móveis desmontados', 64),
-              (65, 'Sofá', 65),
-              (66, 'Colchão', 66),
-              (67, 'Travesseiro', 67),
-              (68, 'Móveis com peças de vidro', 68),
-              (69, 'Acessórios de Airsoft / Paintball', 69),
-              (70, 'Acessórios de Pesca', 70),
-              (71, 'Simulacro de Arma / Airsoft', 71),
-              (72, 'Arquearia', 72),
-              (73, 'Acessórios de Arquearia', 73),
-              (74, 'Outros', 999);
+            (1, 'Abrasivos', 1),
+            (2, 'Adubos / Fertilizantes', 2),
+            (3, 'Alimentos perecíveis', 3),
+            (4, 'Artigos para Pesca', 4),
+            (5, 'Auto Peças', 5),
+            (6, 'Bebidas / Destilados', 6),
+            (7, 'Brindes', 7),
+            (8, 'Brinquedos', 8),
+            (9, 'Calçados', 9),
+            (10, 'CD / DVD / Blu-Ray', 10),
+            (11, 'Combustíveis / Óleos', 11),
+            (12, 'Confecção', 12),
+            (13, 'Cosméticos', 13),
+            (14, 'Couro', 14),
+            (15, 'Derivados Petróleo', 15),
+            (16, 'Descartáveis', 16),
+            (17, 'Editorial', 17),
+            (18, 'Eletrônicos', 18),
+            (19, 'Eletrodomésticos', 19),
+            (20, 'Embalagens', 20),
+            (21, 'Explosivos / Pirotécnicos', 21),
+            (22, 'Medicamentos', 22),
+            (23, 'Ferragens', 23),
+            (24, 'Ferramentas', 24),
+            (25, 'Fibras Ópticas', 25),
+            (26, 'Fonográfico', 26),
+            (27, 'Fotográfico', 27),
+            (28, 'Fraldas / Geriátricas', 28),
+            (29, 'Higiene / Limpeza', 29),
+            (30, 'Impressos', 30),
+            (31, 'Informática / Computadores', 31),
+            (32, 'Instrumento Musical', 32),
+            (33, 'Livro(s)', 33),
+            (34, 'Materiais Escolares', 34),
+            (35, 'Materiais Esportivos', 35),
+            (36, 'Materiais Frágeis', 36),
+            (37, 'Material de Construção', 37),
+            (38, 'Material de Irrigação', 38),
+            (39, 'Material Elétrico / Lâmpada(s)', 39),
+            (40, 'Material Gráfico', 40),
+            (41, 'Material Hospitalar', 41),
+            (42, 'Material Odontológico', 42),
+            (43, 'Material Pet Shop', 43),
+            (44, 'Material Veterinário', 44),
+            (45, 'Móveis montados', 45),
+            (46, 'Moto Peças', 46),
+            (47, 'Mudas / Plantas', 47),
+            (48, 'Papelaria / Documentos', 48),
+            (49, 'Perfumaria', 49),
+            (50, 'Material Plástico', 50),
+            (51, 'Pneus e Borracharia', 51),
+            (52, 'Produtos Cerâmicos', 52),
+            (53, 'Produtos Químicos', 53),
+            (54, 'Produtos Veterinários', 54),
+            (55, 'Revistas', 55),
+            (56, 'Sementes', 56),
+            (57, 'Suprimentos Agrícolas / Rurais', 57),
+            (58, 'Têxtil', 58),
+            (59, 'Vacinas', 59),
+            (60, 'Vestuário', 60),
+            (61, 'Vidros / Frágil', 61),
+            (62, 'Cargas refrigeradas/congeladas', 62),
+            (63, 'Papelão', 63),
+            (64, 'Móveis desmontados', 64),
+            (65, 'Sofá', 65),
+            (66, 'Colchão', 66),
+            (67, 'Travesseiro', 67),
+            (68, 'Móveis com peças de vidro', 68),
+            (69, 'Acessórios de Airsoft / Paintball', 69),
+            (70, 'Acessórios de Pesca', 70),
+            (71, 'Simulacro de Arma / Airsoft', 71),
+            (72, 'Arquearia', 72),
+            (73, 'Acessórios de Arquearia', 73),
+            (74, 'Alimentos não perecíveis', 74),
+            (75, 'Caixa de embalagem', 75),
+            (76, 'TV / Monitores', 76),
+            (77, 'Linha Branca', 77),
+            (78, 'Vitaminas / Suplementos nutricionais', 78),
+            (79, 'Malas / Mochilas', 79),
+            (80, 'Máquina / Equipamentos', 80),
+            (81, 'Rações / Alimento para Animal', 81),
+            (82, 'Artigos para Camping)', 82),
+            (83, 'Outros', 999);
         ");
 
         $row = $this->db->query("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA LIKE '" . DB_DATABASE . "' AND TABLE_NAME LIKE '" . DB_PREFIX . "product' AND COLUMN_NAME = 'manufacturing_deadline' ");
@@ -142,7 +153,8 @@ class ControllerShippingFreteRapido extends Controller {
         $this->model_localisation_order_status->addOrderStatus($new_order_status);
     }
 
-    public function index() {
+    public function index()
+    {
         $this->language->load('shipping/freterapido');
 
         $this->document->setTitle($this->language->get('heading_title'));
@@ -178,15 +190,15 @@ class ControllerShippingFreteRapido extends Controller {
         $data['entry_cost'] = $this->language->get('entry_cost');
         $data['entry_status'] = $this->language->get('entry_status');
         $data['entry_sort_order'] = $this->language->get('entry_sort_order');
-        $data['entry_cnpj']= $this->language->get('entry_cnpj');
-        $data['entry_results']= $this->language->get('entry_results');
-        $data['entry_limit']= $this->language->get('entry_limit');
-        $data['entry_free_shipping']= $this->language->get('entry_free_shipping');
-        $data['entry_min_value_free_shipping']= $this->language->get('entry_min_value_free_shipping');
-        $data['entry_dimension']= $this->language->get('entry_dimension');
-        $data['entry_length']= $this->language->get('entry_length');
-        $data['entry_width']= $this->language->get('entry_width');
-        $data['entry_height']= $this->language->get('entry_height');
+        $data['entry_cnpj'] = $this->language->get('entry_cnpj');
+        $data['entry_results'] = $this->language->get('entry_results');
+        $data['entry_limit'] = $this->language->get('entry_limit');
+        $data['entry_free_shipping'] = $this->language->get('entry_free_shipping');
+        $data['entry_min_value_free_shipping'] = $this->language->get('entry_min_value_free_shipping');
+        $data['entry_dimension'] = $this->language->get('entry_dimension');
+        $data['entry_length'] = $this->language->get('entry_length');
+        $data['entry_width'] = $this->language->get('entry_width');
+        $data['entry_height'] = $this->language->get('entry_height');
 
         $data['help_cnpj'] = $this->language->get('help_cnpj');
         $data['help_freterapido_token'] = $this->language->get('help_freterapido_token');
@@ -330,7 +342,8 @@ class ControllerShippingFreteRapido extends Controller {
         $this->response->setOutput($this->render());
     }
 
-    protected function validate() {
+    protected function validate()
+    {
         if (!$this->user->hasPermission('modify', 'shipping/freterapido')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
@@ -346,7 +359,8 @@ class ControllerShippingFreteRapido extends Controller {
         return !$this->error;
     }
 
-    public function uninstall() {
+    public function uninstall()
+    {
         $this->load->model('localisation/language');
         $this->load->model('localisation/order_status');
         $this->load->language('shipping/freterapido');
@@ -364,7 +378,8 @@ class ControllerShippingFreteRapido extends Controller {
         }
     }
 
-    public function eventAddOrderHistory($order_id) {
+    public function eventAddOrderHistory($order_id)
+    {
         foreach (['config', 'http', 'hire_shipping', 'helpers'] as $file_name) {
             include_once(DIR_APPLICATION . 'model/freterapido/' . $file_name . '.php');
         }
@@ -420,6 +435,6 @@ class ControllerShippingFreteRapido extends Controller {
             $this->model_sale_order_meta->addMeta($order_id, 'freterapido_shippings', array_values($response));
         } catch (UnexpectedValueException $e) {
             $this->log->write($e->getMessage());
-        } catch (Exception $e) {}
+        } catch (Exception $e) { }
     }
 }
